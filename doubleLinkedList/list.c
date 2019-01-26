@@ -3,14 +3,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+//初始化双链表
 LIST * InitList(){
+	//动态开辟一块内存大小为列表长度
 	LIST *l=(LIST *)malloc(sizeof(LIST));
+	//判断列表对象是否为空
 	if(l==NULL) exit(0);
+	//设置头指针
 	l->head=(NODE *)malloc(sizeof(NODE));
 	
 	if(l->head==NULL) exit(0);
-	
+	//动态开辟一块内存空间，内容清0
 	memset(l->head,0,sizeof(NODE));
 	
 	l->last=(NODE *)malloc(sizeof(NODE));
@@ -19,10 +22,11 @@ LIST * InitList(){
 	//if(l->head==NULL) exit(0);
 
 	memset(l->last,0,sizeof(NODE));
-
+	//头指针的下一个结点为列表尾元素
 	l->head->next=l->last;
+	//前驱为空
 	l->last->pior=l->head;
-
+	//列表长度为0
 	l->length=0;
 	return l;
 }
@@ -39,6 +43,7 @@ int InsertNode(LIST *l,void *data,int size){
 		free(n);
 		return 0;
 	}
+	//把数据复制到挪空的位置
 	memcpy(n->data,data,size);
 	n->next=l->last;
 	n->pior=l->last->pior;

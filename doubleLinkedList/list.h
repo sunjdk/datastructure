@@ -15,6 +15,7 @@ typedef struct{
 }LIST;
 
 
+//ÉùÃ÷º¯ÊıÌå
 LIST * InitList();
 int DeleteNode(LIST *l,int n);
 int InsertNode(LIST *l,void *data,int size);
